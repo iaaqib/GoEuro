@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="104" id="raP-vy-pOY" customClass="TravelCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="104"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="raP-vy-pOY" id="b5j-Sf-k2X">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="103"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Airplane Take Off-50" translatesAutoresizingMaskIntoConstraints="NO" id="fsw-Vw-fT6">
+                        <rect key="frame" x="10" y="8" width="117" height="38"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17:00 - 23:50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dV2-pU-HMl">
+                        <rect key="frame" x="10" y="71" width="110" height="22"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="€ 19.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y18-yo-021">
+                        <rect key="frame" x="236" y="15" width="74" height="24"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Direct" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rC7-9q-FeU">
+                        <rect key="frame" x="186" y="71" width="49" height="22"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8:15h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U2b-zI-EEP">
+                        <rect key="frame" x="265" y="71" width="45" height="22"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="U2b-zI-EEP" secondAttribute="bottom" constant="10" id="4YP-2h-dVJ"/>
+                    <constraint firstItem="dV2-pU-HMl" firstAttribute="top" secondItem="fsw-Vw-fT6" secondAttribute="bottom" constant="25" id="4vu-GJ-IC0"/>
+                    <constraint firstItem="U2b-zI-EEP" firstAttribute="leading" secondItem="rC7-9q-FeU" secondAttribute="trailing" constant="30" id="5eu-HU-E5I"/>
+                    <constraint firstItem="fsw-Vw-fT6" firstAttribute="height" secondItem="b5j-Sf-k2X" secondAttribute="height" multiplier="38:103" id="EF4-eb-Dvu"/>
+                    <constraint firstAttribute="trailing" secondItem="U2b-zI-EEP" secondAttribute="trailing" constant="10" id="GTe-E9-b6x"/>
+                    <constraint firstItem="y18-yo-021" firstAttribute="top" secondItem="b5j-Sf-k2X" secondAttribute="top" constant="15" id="K2I-Hm-2ek"/>
+                    <constraint firstItem="dV2-pU-HMl" firstAttribute="leading" secondItem="b5j-Sf-k2X" secondAttribute="leading" constant="10" id="OYT-Cn-nLz"/>
+                    <constraint firstItem="fsw-Vw-fT6" firstAttribute="width" secondItem="b5j-Sf-k2X" secondAttribute="width" multiplier="131:370" constant="3.8945945945945937" id="P1D-cu-Jvp"/>
+                    <constraint firstItem="fsw-Vw-fT6" firstAttribute="top" secondItem="b5j-Sf-k2X" secondAttribute="top" constant="8" id="Slj-1A-WxK"/>
+                    <constraint firstItem="fsw-Vw-fT6" firstAttribute="leading" secondItem="b5j-Sf-k2X" secondAttribute="leading" constant="10" id="X4u-pN-edx"/>
+                    <constraint firstAttribute="bottom" secondItem="rC7-9q-FeU" secondAttribute="bottom" constant="10" id="b7e-8Z-09c"/>
+                    <constraint firstAttribute="trailing" secondItem="y18-yo-021" secondAttribute="trailing" constant="10" id="xSy-4Q-sta"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="arrivalTime" destination="dV2-pU-HMl" id="RXm-3h-0sa"/>
+                <outlet property="departTime" destination="U2b-zI-EEP" id="ijV-nU-9if"/>
+                <outlet property="logo" destination="fsw-Vw-fT6" id="uzL-Cs-TN6"/>
+                <outlet property="priceInEuros" destination="y18-yo-021" id="JjC-dA-HIs"/>
+            </connections>
+            <point key="canvasLocation" x="155.5" y="206"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Airplane Take Off-50" width="25" height="25"/>
+    </resources>
+</document>
