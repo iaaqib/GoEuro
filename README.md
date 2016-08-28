@@ -1,2 +1,0 @@
-# GoEuro
-GoEuro Test application
