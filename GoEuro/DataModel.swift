@@ -24,7 +24,7 @@ import UIKit
         self.id = data[index]["id"] as? Int
         self.numberOfStops = data[index]["number_of_stops"] as? Int
         let priceInEuros = data[index]["price_in_euros"] as? Double
-        print(priceInEuros)
+        
         if let price = priceInEuros{
             let price = Double(round(100*price)/100)
             self.prices = String(price)

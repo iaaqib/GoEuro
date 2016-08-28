@@ -47,6 +47,11 @@
                         
                     }];
                 }
+                else{
+                    [Util showAlert:@"Sorry" message:@"Internet Isn't Connected" buttonTitle:@"Retry" sender:self completion:^{
+                        [self sendRequest];
+                    }];
+                }
                 
             }
             else{
@@ -99,8 +104,15 @@
                 
             }
             else{
+                if ([Network connectivityCode] == 0 || [Network connectivityCode] == -1){
+                    [Util showAlert:@"Sorry" message:@"Internet Isn't Connected" buttonTitle:@"Retry" sender:self completion:^{
+                        [self sendRequest];
+                    }];
+                
+                }
+                else{
                 NSLog(@"Nothing To Show");
-                [_activityIndicator stopAnimating];
+                
                 
                 [Util showAlert:@"Sorry" message:@"No Data Available to Show" buttonTitle:@"Retry" sender:self completion:^{
                     [self sendRequest];
@@ -108,13 +120,30 @@
                 }];
                 
             }
+                
+             [_activityIndicator stopAnimating];
+                
+            }
         }
         else{
             NSLog(@"Nothing To Show");
             [_activityIndicator stopAnimating];
-            [Util showAlert:@"Sorry" message:@"No Data Available to Show" buttonTitle:@"Retry" sender:self completion:^{
-                [self sendRequest];
-            }];
+            if ([Network connectivityCode] == 0 || [Network connectivityCode] == -1){
+                [Util showAlert:@"Sorry" message:@"Internet Isn't Connected" buttonTitle:@"Retry" sender:self completion:^{
+                    [self sendRequest];
+                }];
+                
+            }
+            else{
+                NSLog(@"Nothing To Show");
+                
+                
+                [Util showAlert:@"Sorry" message:@"No Data Available to Show" buttonTitle:@"Retry" sender:self completion:^{
+                    [self sendRequest];
+                    
+                }];
+                
+            }
 
         
         

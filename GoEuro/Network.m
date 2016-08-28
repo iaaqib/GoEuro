@@ -13,6 +13,7 @@
 
 @implementation Network
 
+static id <NetworkConnectivityCodeDelegate> codeDelegate;
 static NSUInteger connectivityCode;
 +(void)request:(NSString*)url parameters:(NSDictionary*)parametersDictionary completion:(void (^)(id finished, NSError* error))completion {
     
@@ -31,6 +32,8 @@ static NSUInteger connectivityCode;
 + (NSUInteger) connectivityCode { return connectivityCode; }
 + (void)setConnectivityCode:(NSUInteger)value
 { connectivityCode = value;
+    [codeDelegate connectivityStateChanged:value];
+    
 }
 +(NSMutableArray*)loadData:(NSArray *)savedData{
 
@@ -49,6 +52,10 @@ static NSUInteger connectivityCode;
     return array;
     // [Util animateCells:self.tableView];
 
+
+}
++(void)delegate:(id)sender{
+    codeDelegate = sender;
 
 }
 @end

@@ -74,6 +74,7 @@
 		75F204E01D71EBE000869E86 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7B3A627B1D71E1C100780E5A /* CustomTravelCell.xib */,
 				75F204DD1D71EBCC00869E86 /* TravelCell.h */,
 				75F204DE1D71EBCC00869E86 /* TravelCell.m */,
 			);
@@ -136,7 +137,6 @@
 				7BE4B0B41D624CBA00966B38 /* LaunchScreen.storyboard */,
 				7BE4B0B71D624CBA00966B38 /* Info.plist */,
 				7BE4B0A31D624CBA00966B38 /* Supporting Files */,
-				7B3A627B1D71E1C100780E5A /* CustomTravelCell.xib */,
 			);
 			path = GoEuro;
 			sourceTree = "<group>";

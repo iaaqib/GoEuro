@@ -20,8 +20,11 @@
 @synthesize busData;
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [Network delegate:self];
+    
     busData = [NSMutableArray new];
      NSLog(@"Reachability Second");
+   
     
     if ([Network connectivityCode] == 0 || [Network connectivityCode] == -1){
         busData = [NSMutableArray new];
@@ -31,6 +34,11 @@
 
                 busData = [Network loadData:savedData];
                 [Util animateCells:self.tableView];
+            }];
+        }
+        else{
+            [Util showAlert:@"Sorry" message:@"Internet Isn't Connected" buttonTitle:@"Retry" sender:self completion:^{
+                [self sendRequest];
             }];
         }
         
@@ -51,20 +59,22 @@
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Sort" style:UIBarButtonItemStyleBordered target:self action:@selector(sortBy:)];
     rightButton.tintColor =[UIColor whiteColor];
     self.tabBarController.navigationItem.rightBarButtonItem = rightButton;
-    
+
 }
+
+
 -(void) sendRequest{
     [_activityIndicator setHidden:NO];
     [_activityIndicator startAnimating];
     
     [Network request:@"https://api.myjson.com/bins/37yzm" parameters:nil completion:^(id finished, NSError *error) {
-      //  NSLog(@"success!%@",finished);
+        //   NSLog(@"success!%@",finished);
         if (error == NULL)
         {
             if (finished != NULL){
                 for (int i = 0 ; i < [finished count] ; i++){
                     [busData addObject:[[DataModel alloc] initWithData:finished index:i]];
-                    NSLog(@"Prices:%@",[[busData objectAtIndex:i] prices]);
+                    //      NSLog(@"Prices:%@",[[busData objectAtIndex:i] prices]);
                     
                 }
                 [_activityIndicator stopAnimating];
@@ -72,32 +82,58 @@
                 NSArray *sortedArray = [Util sortedData:busData valueKey:@"departureTime"];
                 [busData removeAllObjects];
                 busData = [NSMutableArray arrayWithArray:sortedArray];
-                [[DataModel userDefaults] setObject:finished forKey:@"busData"];
                 [Util animateCells:self.tableView];
-               
+                [[DataModel userDefaults] setObject:finished forKey:@"busData"];
+                
             }
             else{
-                NSLog(@"Nothing To Show");
+                if ([Network connectivityCode] == 0 || [Network connectivityCode] == -1){
+                    [Util showAlert:@"Sorry" message:@"Internet Isn't Connected" buttonTitle:@"Retry" sender:self completion:^{
+                        [self sendRequest];
+                    }];
+                    
+                }
+                else{
+                    NSLog(@"Nothing To Show");
+                    
+                    
+                    [Util showAlert:@"Sorry" message:@"No Data Available to Show" buttonTitle:@"Retry" sender:self completion:^{
+                        [self sendRequest];
+                        
+                    }];
+                    
+                }
+                
                 [_activityIndicator stopAnimating];
-                [Util showAlert:@"Sorry" message:@"No Data Available to Show" buttonTitle:@"Retry" sender:self completion:^{
-                    [self sendRequest];
-                }];
                 
             }
         }
         else{
             NSLog(@"Nothing To Show");
             [_activityIndicator stopAnimating];
-            [Util showAlert:@"Sorry" message:@"No Data Available to Show" buttonTitle:@"Retry" sender:self completion:^{
-                [self sendRequest];
-            }];
+            if ([Network connectivityCode] == 0 || [Network connectivityCode] == -1){
+                [Util showAlert:@"Sorry" message:@"Internet Isn't Connected" buttonTitle:@"Retry" sender:self completion:^{
+                    [self sendRequest];
+                }];
+                
+            }
+            else{
+                NSLog(@"Nothing To Show");
+                
+                
+                [Util showAlert:@"Sorry" message:@"No Data Available to Show" buttonTitle:@"Retry" sender:self completion:^{
+                    [self sendRequest];
+                    
+                }];
+                
+            }
             
             
             
             
         }
         
-        //   NSLog(@"Data:%@",[[busData objectAtIndex:1] arrival]);
+        
     }];//
     
     
@@ -106,6 +142,9 @@
     
     
 }
+
+
+
 //for iOS 7
 -(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     
@@ -155,6 +194,19 @@
     
     
     
+}
+-(void)connectivityStateChanged:(NSUInteger)connectivityCode{
+
+    NSLog(@"%lu",(unsigned long)connectivityCode);
+    if (connectivityCode == 1 || connectivityCode == 2)
+    {
+        
+        
+          [self sendRequest];
+        
+        
+    }
+
 }
 
 

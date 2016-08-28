@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "TravelCell.h"
 #import <AFNetworking.h>
+#import "Network.h"
 
-@interface SecondViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
+@interface SecondViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, NetworkConnectivityCodeDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 

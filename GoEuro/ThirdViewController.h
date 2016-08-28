@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "TravelCell.h"
-
-@interface ThirdViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
+#import "Network.h"
+#import <AFNetworking.h>
+@interface ThirdViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, NetworkConnectivityCodeDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
